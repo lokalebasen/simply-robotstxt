@@ -3,6 +3,11 @@ require 'open-uri'
 class RobotsTxtParser
   attr_accessor :user_agents
   attr_accessor :sitemaps
+  
+  def initialize
+    @user_agents = Hash.new
+    @sitemaps = Array.new
+  end  
 
   def read(path)
     begin
@@ -14,9 +19,6 @@ class RobotsTxtParser
     rescue
       raw_data = nil
     end
-
-    @user_agents = Hash.new
-    @sitemaps = Array.new
 
     return if raw_data == nil
 
